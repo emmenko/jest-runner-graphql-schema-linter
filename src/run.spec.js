@@ -28,9 +28,6 @@ const createTestByFileExt = ext => () => {
         globalConfig: {}
       });
     });
-    it("matches snapshot", () => {
-      expect(result).toMatchSnapshot();
-    });
     it("should pass the lint check", () => {
       expect(result.numPassingTests).toBe(1);
     });
@@ -48,9 +45,6 @@ const createTestByFileExt = ext => () => {
         config: {},
         globalConfig: {}
       });
-    });
-    it("matches snapshot", () => {
-      expect(result).toMatchSnapshot();
     });
     it("should not pass the lint check", () => {
       expect(result.numPassingTests).toBe(0);
