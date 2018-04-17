@@ -1,0 +1,11 @@
+type Unused {
+  foo: String
+}
+
+type Query {
+  version: Int
+}
+
+schema {
+  query: Query
+}

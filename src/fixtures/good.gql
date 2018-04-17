@@ -1,0 +1,19 @@
+"""
+Required as per Relay spec
+"""
+type PageInfo {
+  "hasNextPage"
+  hasNextPage: Boolean!
+  "hasPreviousPage"
+  hasPreviousPage: Boolean!
+}
+
+"""
+The main query
+"""
+type Query {
+  "Print the version number"
+  version: Int
+  "Get infos"
+  info: PageInfo!
+}
