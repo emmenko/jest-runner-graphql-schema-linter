@@ -1,4 +1,15 @@
-<h1 align="center">jest-runner-graphql-schema-linter</h1>
+[![Build Status](https://travis-ci.org/emmenko/jest-runner-graphql-schema-linter.svg?branch=master)](https://travis-ci.org/emmenko/jest-runner-graphql-schema-linter)
+[![npm version](https://badge.fury.io/js/jest-runner-graphql-schema-linter.svg)](https://badge.fury.io/js/jest-runner-graphql-schema-linter)
+
+<div align="center">
+  <!-- replace with accurate logo e.g from https://worldvectorlogo.com/ -->
+  <img width="150" height="150" src="https://raw.githubusercontent.com/facebook/graphql/master/resources/GraphQL%20Logo.png">
+  <a href="https://facebook.github.io/jest/">
+    <img width="150" height="150" vspace="" hspace="25" src="https://user-images.githubusercontent.com/2440089/37489554-6f776bd2-286e-11e8-862f-cb6c398cf752.png">
+  </a>
+  <h1>jest-runner-graphql-schema-linter</h1>
+  <p>GraphQL Schema Linter runner for Jest</p>
+</div>
 
 ## Usage
 
