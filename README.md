@@ -15,6 +15,10 @@
 
 This library is a [jest-runner](https://facebook.github.io/jest/docs/en/configuration.html#runner-string) for the [`graphql-schema-linter`](https://github.com/cjoudrey/graphql-schema-linter) library.
 
+### Limitations
+
+If your schema is spread across multiple files, you will probably get a bunch of errors (like `Type "Foo" not found in document.`). This is because jest will pass a single file path to be tested at a time, as opposed to letting the CLI concatenate all the graphql schema.
+
 ### Install
 
 Install `jest`_(it needs Jest 21+)_ and `jest-runner-graphql-schema-linter`
