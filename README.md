@@ -12,7 +12,6 @@ yarn add --dev jest jest-runner-graphql-schema-linter
 # or with NPM
 
 npm install --save-dev jest jest-runner-graphql-schema-linter
-
 ```
 
 ### Add it to your Jest config
@@ -20,23 +19,27 @@ npm install --save-dev jest jest-runner-graphql-schema-linter
 #### Standalone
 
 In your `package.json`
+
 ```json
 {
   "jest": {
     "runner": "jest-runner-graphql-schema-linter",
     "displayName": "lint:gql",
-    "testMatch": ["<rootDir>/src/**/*.gql"],
+    "moduleFileExtensions": ["gql", "graphql"],
+    "testMatch": ["<rootDir>/src/**/*.gql"]
   }
 }
 ```
 
 Or in `jest.config.js`
+
 ```js
 module.exports = {
-  runner: 'jest-runner-graphql-schema-linter',
-  displayName: 'gql lint',
-  testMatch: ['<rootDir>/src/**/*.gql'],
-}
+  runner: "jest-runner-graphql-schema-linter",
+  displayName: "gql lint",
+  moduleFileExtensions: ["gql", "graphql"],
+  testMatch: ["<rootDir>/src/**/*.gql"]
+};
 ```
 
 Please update `testMatch` to match your project folder structure
@@ -51,16 +54,17 @@ If you are using Jest <22.0.5, you can use multiple Jest configuration files and
 // jest-test.config.js
 module.exports = {
   // your Jest test options
-  displayName: 'test'
-}
+  displayName: "test"
+};
 
 // jest-grapqhl-schema-linter.config.js
 module.exports = {
   // your jest-runner-graphql-schema-linter options
-  runner: 'jest-runner-graphql-schema-linter',
-  displayName: 'gql lint',
-  testMatch: ['<rootDir>/src/**/*.gql']
-}
+  runner: "jest-runner-graphql-schema-linter",
+  displayName: "gql lint",
+  moduleFileExtensions: ["gql", "graphql"],
+  testMatch: ["<rootDir>/src/**/*.gql"]
+};
 ```
 
 In your `package.json`:
@@ -81,10 +85,10 @@ Or in `jest.config.js`:
 ```js
 module.exports = {
   projects: [
-    '<rootDir>/jest-test.config.js',
-    '<rootDir>/jest-graphql-schema-linter.config.js'
+    "<rootDir>/jest-test.config.js",
+    "<rootDir>/jest-graphql-schema-linter.config.js"
   ]
-}
+};
 ```
 
 If you are using Jest >=22.0.5, you can supply an array of project configuration objects instead. In your `package.json`:
@@ -99,9 +103,10 @@ If you are using Jest >=22.0.5, you can supply an array of project configuration
       {
         "runner": "jest-runner-graphql-schema-linter",
         "displayName": "lint:gql",
-        "testMatch": ["<rootDir>/src/**/*.gql"],
+        "moduleFileExtensions": ["gql", "graphql"],
+        "testMatch": ["<rootDir>/src/**/*.gql"]
       }
-    ] 
+    ]
   }
 }
 ```
@@ -112,18 +117,20 @@ Or in `jest.config.js`:
 module.exports = {
   projects: [
     {
-      displayName: 'test'
+      displayName: "test"
     },
     {
-      runner: 'jest-runner-graphql-schema-linter',
-      displayName: 'gql lint',
-      testMatch: ['<rootDir>/src/**/*.gql']
+      runner: "jest-runner-graphql-schema-linter",
+      displayName: "gql lint",
+      moduleFileExtensions: ["gql", "graphql"],
+      testMatch: ["<rootDir>/src/**/*.gql"]
     }
   ]
-}
+};
 ```
 
 ### Run Jest
+
 ```bash
 yarn test
 ```
