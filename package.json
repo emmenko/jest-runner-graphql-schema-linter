@@ -1,0 +1,39 @@
+{
+  "name": "jest-runner-graphql-schema-linter",
+  "version": "1.0.0",
+  "description": "A GraphQL Schema Linter as a Jest runner",
+  "author": "Nicola Molinari <me@emmenko.org>",
+  "license": "MIT",
+  "private": false,
+  "homepage": "https://github.com/emmenko/jest-runner-graphql-schema-linter",
+  "repository": {
+    "type": "git",
+    "url":
+      "git+ssh://git@github.com/emmenko/jest-runner-graphql-schema-linter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/emmenko/jest-runner-graphql-schema-linter/issues"
+  },
+  "keywords": ["jest", "jest-runner", "graphql", "lint"],
+  "main": "src/index.js",
+  "scripts": {
+    "precommit": "lint-staged",
+    "test": "jest"
+  },
+  "dependencies": {
+    "graphql-schema-linter": "^0.1.5",
+    "create-jest-runner": "^0.3.0"
+  },
+  "devDependencies": {
+    "husky": "0.14.3",
+    "jest": "22.4.3",
+    "lint-staged": "7.0.4",
+    "prettier": "1.12.1"
+  },
+  "jest": {
+    "projects": ["jest-graphql-schema-linter.config.js", "jest-test.config.js"]
+  },
+  "lint-staged": {
+    "*": "jest --bail --findRelatedTests"
+  }
+}
