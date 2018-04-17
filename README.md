@@ -2,6 +2,8 @@
 
 ## Usage
 
+This library is a [jest-runner](https://facebook.github.io/jest/docs/en/configuration.html#runner-string) for the [`graphql-schema-linter`](https://github.com/cjoudrey/graphql-schema-linter) library.
+
 ### Install
 
 Install `jest`_(it needs Jest 21+)_ and `jest-runner-graphql-schema-linter`
@@ -134,3 +136,46 @@ module.exports = {
 ```bash
 yarn test
 ```
+
+## Options
+
+This project uses [cosmiconfig](https://github.com/davidtheclark/cosmiconfig), so you can provide config via:
+
+* a `jest-runner-eslint` property in your `package.json`
+* a `jest-runner-eslint.config.js` JS file
+* a `.jest-runner-eslintrc` JSON file
+
+In `package.json`
+
+```json
+{
+  "jest-runner-eslint": {
+    "cliOptions": {
+      // Options here
+    }
+  }
+}
+```
+
+or in `jest-runner-eslint.config.js`
+
+```js
+module.exports = {
+  cliOptions: {
+    // Options here
+  }
+};
+```
+
+### cliOptions
+
+The listed options are the ones provided by the `graphql-schema-linter` CLI.
+
+| option              | default | values       | example                                                            |
+| ------------------- | ------- | ------------ | ------------------------------------------------------------------ |
+| rules               | `[]`    |              | `"rules": ["fields-have-descriptions", "types-have-descriptions"]` |
+| format              | `text`  | `text|json`  | `"format": "json"`                                                 |
+| configDirection     | `null`  |              | `"configDirection": "./src"`                                       |
+| customRulePaths     | `null`  |              | `"customRulePaths": "./rules/*.js"`                                |
+| commentDescriptions | `false` | `false|true` | `"commentDescriptions": true`                                      |
+| oldImplementSyntax  | `false` | `false|true` | `"oldImplementSyntax": true`                                       |

@@ -4,18 +4,22 @@ const {
   configuration: { Configuration },
   validator: { validateSchemaDefinition }
 } = require("graphql-schema-linter");
+const loadCliOptions = require("./load-cli-options");
 
-module.exports = ({ testPath }) => {
+module.exports = ({ config, testPath }) => {
   const start = new Date();
+
+  const cliOptions = loadCliOptions(config);
 
   // NOTE: the following setup is taken from the `runner.js` file
   // in the linter library.
   // https://github.com/cjoudrey/graphql-schema-linter/blob/ca77478e2204e5cdc57adbb4fbffe4cdd81459ec/src/runner.js#L63-L96
 
-  const configuration = new Configuration({
-    schemaPaths: [testPath]
-    // TODO: allow to pass custom options
-  });
+  const configuration = new Configuration(
+    Object.assign({}, cliOptions, {
+      schemaPaths: [testPath]
+    })
+  );
   const formatter = configuration.getFormatter();
   const issues = configuration.validate();
   const issueErrors = issues.filter(issue => issue.type === "error");
