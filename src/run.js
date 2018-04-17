@@ -22,29 +22,24 @@ module.exports = ({ config, testPath }) => {
   );
   const formatter = configuration.getFormatter();
   const issues = configuration.validate();
-  const issueErrors = issues.filter(issue => issue.type === "error");
 
-  if (issueErrors.length > 0) {
-    const combinedErrorMessages = [];
-    const combinedWarningMessages = [];
-    issueErrors.forEach(issue => {
-      if (issue.type === "error") {
-        combinedErrorMessages.push(`Error on ${issue.field}: ${issue.message}`);
-      } else if (issue.type === "warning") {
-        combinedWarningMessages.push(
-          `Warning on ${issue.field}: ${issue.message}`
-        );
-      }
-    });
-    if (combinedWarningMessages) {
-      console.warn(combinedErrorMessages.join("\n\n"));
-    }
+  // Treat all issues as errors, even the issues logged as `warning`
+  // because there is no way to pass that info to the output.
+  if (issues.length > 0) {
     return fail({
       start,
       end: new Date(),
       test: {
         path: testPath,
-        errorMessage: combinedErrorMessages.join("\n\n")
+        errorMessage:
+          issues
+            .map(
+              issue =>
+                `${issue.type.toUpperCase()} on ${issue.field}: ${
+                  issue.message
+                }`
+            )
+            .join("\n\n") + "\n\n"
       }
     });
   }
