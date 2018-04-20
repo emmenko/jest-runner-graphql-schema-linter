@@ -156,29 +156,29 @@ yarn test
 
 This project uses [cosmiconfig](https://github.com/davidtheclark/cosmiconfig), so you can provide config via:
 
-* a `jest-runner-eslint` property in your `package.json`
-* a `jest-runner-eslint.config.js` JS file
-* a `.jest-runner-eslintrc` JSON file
+* a `jest-runner-graphql-schema-linter` property in your `package.json`
+* a `jest-runner-graphql-schema-linter.config.js` JS file
+* a `.jest-runner-graphql-schema-linterrc` JSON file
 
 In `package.json`
 
 ```json
 {
-  "jest-runner-eslint": {
-    "cliOptions": {
-      // Options here
-    }
+  "jest-runner-graphql-schema-linter": {
+    "rules": [
+      // Custom linting rules
+    ]
   }
 }
 ```
 
-or in `jest-runner-eslint.config.js`
+or in `jest-runner-graphql-schema-linter.config.js`
 
 ```js
 module.exports = {
-  cliOptions: {
-    // Options here
-  }
+  rules: [
+    // Custom linting rules
+  ]
 };
 ```
 
